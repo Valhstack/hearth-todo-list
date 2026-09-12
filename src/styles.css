@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+}
+
+@font-face {
+    font-family: "Calistoga";
+    src: url("./assets/fonts/Calistoga.ttf");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url('./assets/fonts/Inter.ttf');
+}
+
+body{
+    display: flex;
+    height: calc(100vh - 80px);
+}
+
+.sidebar{
+    height: 100%;
+    width: 240px;
+    background-color: #0F2D3A;
+
+    padding: 40px 56px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-h1{
+    font-family: 'Calistoga';
+    font-size: 24px;
+    line-height: 28x;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+}
+
+.sidebar-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-btns-wrapper{
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.sidebar-btn{
+    background-color: transparent;
+    border: none;
+
+    font-family: 'Inter';
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    color: #d9e6e7;
+
+    height: 36px;
+    padding: 10px;
+
+    width: 100%;
+    text-align: left;
+}
+
+.sidebar-btn.selected{
+    background-color: #1f6b7a;
+    color: #ffffff;
+    border-radius: 8px;
+}
