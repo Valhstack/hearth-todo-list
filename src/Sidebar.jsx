@@ -7,10 +7,6 @@ function Sidebar() {
                 <button className="sidebar-btn" id="sidebar-today-btn">Today</button>
                 <button className="sidebar-btn" id="sidebar-upcoming-btn">Upcoming</button>
             </div>
-            <div className="sidebar-projects-wrapper">
-                <h4 className="sidebar-h4">Projects</h4>
-                {/* here I will add <Projects /> to list all the projects in the future */}
-            </div>
         </div>
     </div>
 }

@@ -3,13 +3,13 @@
 }
 
 @font-face {
-    font-family: "Calistoga";
-    src: url("./assets/fonts/Calistoga.ttf");
+    font-family: "DM Sans";
+    src: url("./assets/fonts/DMSans.ttf");
 }
 
 @font-face {
-    font-family: "Inter";
-    src: url('./assets/fonts/Inter.ttf');
+    font-family: "Fraunces";
+    src: url('./assets/fonts/Fraunces.ttf');
 }
 
 body{
@@ -26,29 +26,32 @@ body{
 
     display: flex;
     flex-direction: column;
+
+    gap: 28px;
 }
 
 .sidebar-h1{
-    font-family: 'Calistoga';
-    font-size: 24px;
-    line-height: 28x;
-    font-weight: 400;
-    color: #FFFFFF;
+    font-family: 'Fraunces';
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: 600;
+    color: #FBFAF6;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 0.2px;
 }
 
 .sidebar-wrapper{
     display: flex;
     flex-direction: column;
+
+    gap: 4px;
 }
 
 .sidebar-btns-wrapper{
     display: flex;
     flex-direction: column;
 
-    gap: 16px;
+    gap: 4px;
 }
 
 .sidebar-btn{
