@@ -19,23 +19,16 @@
 }
 
 body {
-    display: flex;
-    height: 100vh;
-}
-
-.sidebar {
-    position: relative;
-
-    height: 100%;
-    width: 280px;
-    background-color: #0F2D3A;
-
-    padding: 40px 32px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 28px;
+    margin: 0;
+    min-height: 100vh;
+    font: 400 14px/21px "IBM Plex Sans", system-ui, sans-serif;
+    color: #E6EEF0;
+    background-color: #08131C;
+    background-image:
+        linear-gradient(rgba(76, 192, 204, .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(76, 192, 204, .05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    -webkit-font-smoothing: antialiased;
 }
 
 .sidebar::before {
@@ -44,10 +37,13 @@ body {
     inset: 0;
     background-image: url('./assets/imgs/sidebar.png');
     background-repeat: no-repeat;
-    background-size: 1200px auto;
-    background-position: 85% 0;
+    background-size: 1300px auto;
+    background-position: 88% 0;
     opacity: 0.25;
     filter: brightness(1.55);
+    /* quiet behind the nav, fuller toward the bottom */
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .3) 0, rgba(0, 0, 0, .3) 45%, rgba(0, 0, 0, .6) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .3) 0, rgba(0, 0, 0, .3) 45%, rgba(0, 0, 0, .6) 100%);
 }
 
 .sidebar>* {
@@ -55,55 +51,182 @@ body {
     z-index: 1;
 }
 
+/* ---------- sidebar (dark) ---------- */
+.sidebar {
+    box-sizing: border-box;
+    width: 280px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    overflow-y: auto;
+    background: #0B1B27;
+    color: #9FB9C2;
+    border-right: 1px solid #21394A;
+}
+
 .sidebar-h1 {
-    font-family: 'Fraunces';
-    font-size: 25px;
-    line-height: 25px;
-    font-weight: 600;
-    color: #FBFAF6;
-    text-decoration: none;
-    text-transform: uppercase;
+    margin: 0 0 24px;
+    padding: 0 10px;
+    font: 600 28px/32px Fraunces, Georgia, serif;
+    color: #E6EEF0;
 }
 
-.sidebar-wrapper {
+/* + Task / + Note */
+.sidebar-top-wrapper {
     display: flex;
-    flex-direction: column;
-
-    gap: 4px;
+    gap: 8px;
+    margin-bottom: 8px;
 }
 
-.sidebar-btns-wrapper {
+.sidebar-top-btn {
+    flex: 1;
+    height: 44px;
     display: flex;
-    flex-direction: column;
-
-    gap: 4px;
-}
-
-.sidebar-btn {
-    background-color: transparent;
-    border: none;
-
-    font-family: 'IBM Plex Sans';
-    font-size: 16px;
-    line-height: 18px;
-    font-weight: 400;
-    color: #d7e6e8;
-
-    height: 36px;
-    padding: 10px;
-
-    width: 100%;
-    text-align: left;
-}
-
-.sidebar-btn.selected {
-    background-color: #1f6b7a;
-    color: #fff;
+    align-items: center;
+    justify-content: center;
+    border: 0;
     border-radius: 8px;
+    background: #15394A;
+    color: #7FE0EA;
+    font: 500 14px/20px "IBM Plex Sans", system-ui, sans-serif;
+    cursor: pointer;
 }
 
-.solid {
-    margin: 20px 0;
-    border: none;
-    border-top: 1px solid #2B454E;
+/* group labels */
+.tasks-label,
+.projects-label,
+.notes-label {
+    margin: 24px 12px 8px;
+    font: 500 12px/16px "DM Mono", ui-monospace, Menlo, monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(159, 185, 194, .85);
+}
+
+/* group wrappers */
+.sidebar-tasks-wrapper,
+.sidebar-projects-wrapper,
+.sidebar-notes-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* nav buttons */
+.sidebar-tasks-btn,
+.sidebar-project-btn,
+.sidebar-notes-btn {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    font: 500 15px/22px "IBM Plex Sans", system-ui, sans-serif;
+    text-align: left;
+    cursor: pointer;
+}
+
+.sidebar-tasks-btn:hover,
+.sidebar-project-btn:hover,
+.sidebar-notes-btn:hover {
+    background: rgba(128, 160, 170, .14);
+}
+
+.sidebar-tasks-btn.selected,
+.sidebar-project-btn.selected,
+.sidebar-notes-btn.selected {
+    background: #15394A;
+    color: #7FE0EA;
+}
+
+/* project marker: brass square, no extra JSX needed */
+.sidebar-project-btn::before {
+    content: "";
+    flex: none;
+    width: 8px;
+    height: 8px;
+    margin: 0 5px;
+    border-radius: 2px;
+    background: #D9B870;
+}
+
+.sidebar-top-btn:focus-visible,
+.sidebar-tasks-btn:focus-visible,
+.sidebar-project-btn:focus-visible,
+.sidebar-notes-btn:focus-visible {
+    outline: 2px solid #7FE0EA;
+    outline-offset: 2px;
+}
+
+.sidebar-settings-btn {
+    width: 100%;
+    height: 40px;
+    margin-top: auto;
+    /* pins it to the bottom of the sidebar */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    font: 500 15px/22px "IBM Plex Sans", system-ui, sans-serif;
+    text-align: left;
+    cursor: pointer;
+}
+
+.sidebar-settings-btn:hover {
+    background: rgba(128, 160, 170, .14);
+}
+
+.sidebar-settings-btn.selected {
+    background: #15394A;
+    color: #7FE0EA;
+}
+
+.sidebar-settings-btn:focus-visible {
+    outline: 2px solid #7FE0EA;
+    outline-offset: 2px;
+}
+
+/* ---------- sidebar icons ---------- */
+.logo-image-svg {
+    display: block;
+    flex: none;
+    width: 18px;
+    height: 18px;
+    /* flatten to black first, then tint to #9FB9C2 (matches the button text) */
+    filter: brightness(0) saturate(100%) invert(34%) sepia(92%) saturate(64%) hue-rotate(149deg) brightness(181%) contrast(89%);
+}
+
+/* selected row: tint to #7FE0EA (matches the selected text) */
+.sidebar-tasks-btn.selected .logo-image-svg,
+.sidebar-notes-btn.selected .logo-image-svg,
+.sidebar-settings-btn.selected .logo-image-svg {
+    filter: brightness(0) saturate(100%) invert(43%) sepia(91%) saturate(642%) hue-rotate(189deg) brightness(174%) contrast(84%);
+}
+
+/* ---------- sidebar (responsive) ---------- */
+@media (max-width: 1439px) {
+    .sidebar {
+        width: 260px;
+    }
+}
+
+@media (max-width: 700px) {
+    .sidebar {
+        display: none;
+    }
+
+    /* tab bar replaces it on mobile */
 }
