@@ -1,10 +1,10 @@
-import todayLogo from "./assets/imgs/compass-rose.svg";
-import upcomingLogo from "./assets/imgs/calendar-blank-outline.svg";
-import allTasksLogo from "./assets/imgs/format-list-bulleted.svg";
-import allNotesLogo from "./assets/imgs/file-document-outline.svg";
-import meetingsLogo from "./assets/imgs/account-multiple-outline.svg";
-import toProcessLogo from "./assets/imgs/inbox.svg";
-import settingsLogo from "./assets/imgs/white-balance-sunny.svg";
+import todayLogo from "../assets/imgs/compass-rose.svg";
+import upcomingLogo from "../assets/imgs/calendar-blank-outline.svg";
+import allTasksLogo from "../assets/imgs/format-list-bulleted.svg";
+import allNotesLogo from "../assets/imgs/file-document-outline.svg";
+import meetingsLogo from "../assets/imgs/account-multiple-outline.svg";
+import toProcessLogo from "../assets/imgs/inbox.svg";
+import settingsLogo from "../assets/imgs/white-balance-sunny.svg";
 
 
 function Sidebar() {
