@@ -1,5 +1,5 @@
 import Sidebar from "./components/Sidebar.jsx";
-import { Main } from "./components/Main.jsx";
+import { Main } from "./components/MainDiv.jsx";
 import { useEffect, useState } from "react";
 import { saveTasks, createTask, loadTasks } from "./data/tasks.js";
 
